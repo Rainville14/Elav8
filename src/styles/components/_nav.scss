@@ -1,0 +1,13 @@
+nav {
+	display: flex;
+	flex: 0 0 50%;
+
+	a {
+		font-size: $nav_link_font_size;
+		color: $nav_link_color;
+		padding: 0 10px;
+		&:hover {
+			color: $nav_link_color_hover;
+		}
+	}
+}
