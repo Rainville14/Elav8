@@ -1,19 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Row from 'components/common/layout/row';
-import Column from 'components/common/layout/column';
+import Logo from 'components/Logo/Logo';
 
 class Nav extends React.Component {
 	render() {
 		return (
-			<nav className="col">
-				<Row>
-					<Column><Link to="/About">About</Link></Column>
-					<Column><Link to="/Portfolio">Portfolio</Link></Column>
-					<Column><Link to="/Contact">Contact</Link></Column>
-					<Column><Link to="/Utilities/Styleguide">Styleguide</Link></Column>
-				</Row>
-			</nav>
+			<section className="side-menu col">
+				<Logo />
+				<nav>
+					<Link to="/About">About</Link>
+					<Link to="/Portfolio">Portfolio</Link>
+					<Link to="/Contact">Contact</Link>
+					<Link to="/Utilities/Styleguide">Styleguide</Link>
+				</nav>
+			</section>
 		)
 	}
 };

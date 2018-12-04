@@ -1,6 +1,7 @@
 import React from 'react';
 import Column from 'components/common/layout/column';
 import Row from 'components/common/layout/row';
+import Input from 'components/common/Forms/Input';
 
 class Styleguide extends React.Component {
 	render() {
@@ -15,28 +16,28 @@ class Styleguide extends React.Component {
 					</Column>
 				</Row>
 				<Row>
-					<Column>
-						Textbox
-					</Column>
-					<Column>
-						<input type="text" />
-					</Column>
+					<Input
+						name='userName'
+						id='userName'
+						type='text'
+						label='Username'
+					/>
 				</Row>
 				<Row>
-					<Column>
-						<label htmlFor="styleGuideCheckbox">Checkbox</label>
-					</Column>
-					<Column>
-						<input id="styleGuideCheckbox" type="checkbox" />
-					</Column>
+					<Input
+						name='checkbox'
+						id='checkbox'
+						type='checkbox'
+						label='Checkbox'
+					/>
 				</Row>
 				<Row>
-					<Column>
-						<label htmlFor="styleGuideRadio">Radio</label>
-					</Column>
-					<Column>
-						<input id="styleGuideRadio" type="radio" />
-					</Column>
+					<Input
+						name='gender'
+						id='male'
+						type='radio'
+						label='Male'
+					/>
 				</Row>
 			</React.Fragment>
 		)

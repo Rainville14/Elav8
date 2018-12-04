@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Header from 'components/Header/Header';
-
+import Nav from 'components/Header/Nav';
 
 class Layout extends React.Component {
 	constructor(props, dispatch) {
@@ -11,10 +11,13 @@ class Layout extends React.Component {
 
 		return (
 			<React.Fragment>
-				<Header />
-				<main>
-					{this.props.children}
-				</main>
+				<Nav />
+				<div className="col">
+					<Header />
+					<main>
+						{this.props.children}
+					</main>
+				</div>
 			</React.Fragment>
 		);
 	}

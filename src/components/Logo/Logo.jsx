@@ -20,7 +20,7 @@ class Logo extends React.Component {
 	}
 };
 
-const mapStateToProps = (state, {form}) => {
+const mapStateToProps = (state) => {
 	return {
 		siteName: state.config.formattedSite,
 		logoImage: state.config.logoImage

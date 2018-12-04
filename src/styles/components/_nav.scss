@@ -1,13 +1,18 @@
-nav {
-	display: flex;
-	flex: 0 0 50%;
-
-	a {
-		font-size: $nav_link_font_size;
-		color: $nav_link_color;
-		padding: 0 10px;
-		&:hover {
-			color: $nav_link_color_hover;
+section {
+	&.side-menu {
+		max-width: 250px;
+		background-color: $side_menu_bg_color;
+		nav {		
+			a {
+				display: block;
+				margin: 5px 0;
+				font-size: $nav_link_font_size;
+				color: $side_menu_font_color;
+				padding: 0 10px;
+				&:hover {
+					color: $side_menu_font_color;
+				}
+			}
 		}
 	}
 }

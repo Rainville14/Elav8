@@ -10,8 +10,12 @@ $button_padding: 10px 12px;
 $button_font_size: 14px;
 
 // Header
-$header_bg_color: rgb(28, 83, 119);
+$header_bg_color: #EEE;
 $header_font_color: #FFF;
+
+// Side Menu
+$side_menu_bg_color: #363636;
+$side_menu_font_color: #2db66f;
 
 // Nav
 $nav_link_color: #AAA;
@@ -20,6 +24,6 @@ $nav_link_font_size: 16px;
 
 // Forms
 $input_padding: 8px;
-$input_border: 1px solid #BBB;
+$input_border: 1px solid #CCC;
 $input_border_radius: 0;
 $input_bg_color: #FFF;

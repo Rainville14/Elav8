@@ -11,6 +11,7 @@ const buildConfig = (config) => {
 	return combineReducers({
 		features: combineSection(config.features),
 		site: combineSection(config.site),
+		logoImage: combineSection(config.logoImage),
 		settings: combineSection(config.settings),
 		formattedSite: combineSection(config.formattedSite)
 	});
