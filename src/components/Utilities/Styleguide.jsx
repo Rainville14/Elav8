@@ -1,20 +1,23 @@
 import React from 'react';
+import { Form } from 'react-final-form';
 import Column from 'components/common/layout/column';
 import Row from 'components/common/layout/row';
 import Input from 'components/common/Forms/Input';
 
 class Styleguide extends React.Component {
+	onSubmit = (values) => {
+		console.log('Submitted --- ' + JSON.stringify(values))
+	}
 	render() {
+		const {
+			onSubmit
+		} = this.props;
+
 		return (
-			<React.Fragment>
-				<Row>
-					<Column>
-						Button
-					</Column>
-					<Column>
-						<button className="btn">Button</button>
-					</Column>
-				</Row>
+			<Form
+				onSubmit={this.onSubmit}
+				render={({ handleSubmit, pristine, invalid }) => (
+					<form onSubmit={handleSubmit}>
 				<Row>
 					<Input
 						name='userName'
@@ -39,7 +42,9 @@ class Styleguide extends React.Component {
 						label='Male'
 					/>
 				</Row>
-			</React.Fragment>
+				</form>
+				)}>
+			</Form>
 		)
 	}
 };
