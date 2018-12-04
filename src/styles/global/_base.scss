@@ -14,4 +14,10 @@ main {
 
 .show {
 	display: block !important;
-} 
+}
+.col-gutter {
+	margin: $gutter 0 $gutter $gutter;
+	&:last-of-type {
+		margin-right: $gutter;
+	}
+}

@@ -13,9 +13,9 @@ class BarChart extends React.Component {
 				<div className='chart'>
 					{data &&
 						data.map((dataPoint, index) =>
-							<div className='data-point-wrapper'>
-								<div className='data-point' key={index} style={{width: dataPoint.value + 'px'}}>
-									<span class='value'>{dataPoint.value}</span>
+							<div className='data-point-wrapper' key={index}>
+								<div className='data-point' style={{width: dataPoint.value + 'px'}}>
+									<span className='value'>{dataPoint.value}</span>
 								</div>
 							</div>
 						)}
