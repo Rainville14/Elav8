@@ -9,11 +9,13 @@ class Module extends React.Component {
 		} = this.props;
 
 		return (
-			<Column className="module" gutter>
-				{heading &&
-					<h2>{heading}</h2>
-				}
-				{children}
+			<Column gutter>
+				<div className="module">
+					{heading &&
+						<h3>{heading}</h3>
+					}
+					{children}
+				</div>
 			</Column>
 		)
 	}

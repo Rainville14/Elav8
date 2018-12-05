@@ -15,7 +15,7 @@ class Styleguide extends React.Component {
 		} = this.props;
 
 		return (
-			<React.Fragment>
+			<Row>
 				<Module>
 					<BarChart
 						title='My Stats'
@@ -64,7 +64,7 @@ class Styleguide extends React.Component {
 						)}>
 					</Form>
 				</Module>
-			</React.Fragment>
+			</Row>
 		)
 	}
 };

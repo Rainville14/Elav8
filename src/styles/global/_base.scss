@@ -15,9 +15,17 @@ main {
 .show {
 	display: block !important;
 }
+@media (max-width: 48em){
+	.row {
+		width: 100%;
+	}
+}
 .col-gutter {
-	margin: $gutter 0 $gutter $gutter;
+	padding: $gutter 0 $gutter $gutter;
+	@media (max-width: 48em) {
+		padding-right: $gutter;
+	}
 	&:last-of-type {
-		margin-right: $gutter;
+		padding-right: $gutter;
 	}
 }
