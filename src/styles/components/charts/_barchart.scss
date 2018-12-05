@@ -1,0 +1,15 @@
+.chart {
+	.data-point-wrapper {
+		.data-point {
+			vertical-align: bottom;
+			display: inline-block;
+			background-color: #2db66f;
+			margin: 0 0 3px 0;
+			padding: 5px;
+			text-align: right; 
+			&:hover {
+				box-shadow: 0 0 4px #2db66f;
+			}
+		}
+	}
+}

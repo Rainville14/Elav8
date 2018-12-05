@@ -8,7 +8,7 @@ import {
 	createStore,
 	combineReducers
 } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 
 import {Route, Switch} from 'react-router';
 import createHistory from 'history/createBrowserHistory';
@@ -37,8 +37,6 @@ const rootReducer = combineReducers({
 	config: configReducer(baseSiteConfig)
 });
 
-console.log('ROOT REDUCER: ' + rootReducer)
-
 const Routes = [
 	...Base,
 	...Utilities
@@ -48,12 +46,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const createClientStore = (state, rootReducer, history) => {
 	if (!process.env.DEVTOOLS) {
-		return createStore(rootReducer, state, composeEnhancers(applyMiddleware(thunk, apiMiddleware, routerMiddleware(history)))
+		return createStore(rootReducer, state, composeEnhancers(applyMiddleware(thunk, apiMiddleware, routerMiddleware(history), createLogger()))
 		);
 	} else {
-		//const logger = require('redux-logger');
-
-		return createStore(rootReducer, composeEnhancers(state, applyMiddleware(thunk, apiMiddleware, routerMiddleware(history)))
+		return createStore(rootReducer, state, composeEnhancers(applyMiddleware(thunk, apiMiddleware, routerMiddleware(history)))
 		);
 	}
 };

@@ -1,13 +1,23 @@
 import React from 'react';
+import classnames from 'classnames';
 
 class Column extends React.Component {
 	render() {
 		const {
-			children
+			children,
+			className,
+			gutter
 		} = this.props;
 
 		return (
-			<div className="col">
+			<div 
+				className = {
+					classnames(
+						className,
+						'col',
+						{'col-gutter': gutter}
+						)
+				}>
 				{children}
 			</div>
 		)

@@ -6,7 +6,7 @@ class Nav extends React.Component {
 	render() {
 		return (
 			<section className="side-menu col">
-				<Logo />
+				<Link to="/"><Logo /></Link>
 				<nav>
 					<Link to="/About">About</Link>
 					<Link to="/Portfolio">Portfolio</Link>
