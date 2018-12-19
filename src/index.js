@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {reducer as formReducer} from 'redux-form';
+import { Provider } from 'react-redux';
+import { reducer as formReducer } from 'redux-form';
 import {
 	applyMiddleware,
 	compose,
@@ -10,9 +10,11 @@ import {
 } from 'redux';
 import { createLogger } from 'redux-logger';
 
-import {Route, Switch} from 'react-router';
+import { Route, Switch } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
-import {ConnectedRouter, routerReducer} from 'react-router-redux';
+import { ConnectedRouter, routerReducer } from 'react-router-redux';
+
+import Session from 'components/common/Account/Session';
 
 import baseSiteConfig from 'configs/sites/base';
 
@@ -22,9 +24,11 @@ import Utilities from 'controllers/utilities';
 import Layout from 'views/Layout';
 
 import thunk from 'redux-thunk';
-import {routerMiddleware} from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 
 import configReducer from 'reducers/ConfigReducer';
+import userReducer from 'reducers/UserReducer';
+import sessionReducer from 'reducers/SessionReducer';
 
 import apiMiddleware from 'middleware/apiMiddleware';
 
@@ -34,7 +38,9 @@ import 'styles/global.scss';
 const rootReducer = combineReducers({
 	form: formReducer,
 	routing: routerReducer,
-	config: configReducer(baseSiteConfig)
+	config: configReducer(baseSiteConfig),
+	user: userReducer,
+	session: sessionReducer
 });
 
 const Routes = [
@@ -61,20 +67,22 @@ const store = createClientStore({}, rootReducer, history);
 if (document.getElementById('app')) {
 	ReactDOM.render(
 		<Provider store={store}>
-			<ConnectedRouter history={history}>
-				<Switch>
-					<Layout>
-						{Routes.map((route) =>
-							<Route
-								key={route.path}
-								path={route.path}
-								component={route.component}
-								exact={route.exact}
-							/>
-						)}
-					</Layout>
-				</Switch>
-			</ConnectedRouter>
+			<Session>
+				<ConnectedRouter history={history}>
+					<Switch>
+						<Layout>
+							{Routes.map((route) =>
+								<Route
+									key={route.path}
+									path={route.path}
+									component={route.component}
+									exact={route.exact}
+								/>
+							)}
+						</Layout>
+					</Switch>
+				</ConnectedRouter>
+			</Session>
 		</Provider>, document.getElementById('app')
 	);
 }

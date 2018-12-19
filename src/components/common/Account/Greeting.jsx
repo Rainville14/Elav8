@@ -1,22 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { objectExists } from 'utils/object';
 
 class Greeting extends React.Component {
+    getGreeting = () => {
+        const {
+            name,
+            isAuthenticated
+        } = this.props;
+
+        if (!isAuthenticated) {
+            return (
+                <Link to="/login" >Login</Link>
+            )
+        } else {
+            return (
+                <div className="user">{name}</div>
+            )
+        }
+    }
+
     render() {
         const {
-            authenticated
+            sessionFetched
         } = this.props;
 
         return (
             <div className="col" id="account-greeting">
-                {!authenticated ? (
-                    <Link to="/login">Login</Link>
-                )
-                    : (
-                        <div className="user">Matt</div>
-                    )
+                {sessionFetched &&
+                    this.getGreeting()
                 }
             </div>
         )
@@ -25,7 +37,9 @@ class Greeting extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        authenticated: objectExists(state, 'user.isAuthenticated') ? state.user.isAuthenticated : false
+        name: state.user.name,
+        sessionFetched: state.session.fetched,
+        isAuthenticated: state.user.isAuthenticated
     };
 };
 

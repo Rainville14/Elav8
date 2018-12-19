@@ -1,6 +1,8 @@
 import APIC from 'constants/ApiConstants';
 
 const apiMiddleware = (store) => (dispatch) => (action) => {
+	console.log(action);
+	let response = {};
 	switch (action.type) {
 		case APIC.API_CALL:
 			const state = store.getState();
@@ -10,7 +12,7 @@ const apiMiddleware = (store) => (dispatch) => (action) => {
 				// action.payload.accessToken = state.session.accessToken;
 			// }
 
-			return fetch(payload.url, params)
+			return fetch(action.payload.url)
 			.then(res => {
 				response = {
 					headers: res.headers,
@@ -21,48 +23,27 @@ const apiMiddleware = (store) => (dispatch) => (action) => {
 				if (res.status > 401) {
 					// dispatch(triggerModal(MODAL_BACKEND_ERROR.id));
 				}
-				if (payload) {
+				if (action.payload) {
 					return res.text();
 				}
 			})
 			.then(data => {
 				// some endpoints don't return anything
 				const resp = data ? JSON.parse(data) : {error: 'Not Found'};
+				
+				console.log(resp);
 
-				const errors = objectPath.get(resp, 'errors');
+				// const errors = objectPath.get(resp, 'errors');
 
 				dispatch({
 					type: APIC.API_FETCHED,
 					payload: {
-						request,
 						response,
 						data: resp
 					}
 				});
 
-				if (errors) {
-					const type = objectPath.get(errors, '0.type');
-
-					switch (type) {
-						case 'CSRFError':
-						case 'SessionExpired':
-							dispatch({
-								type: SC.SESSION_ERROR,
-								payload: {
-									type,
-									error: true
-								}
-							});
-							return;
-					}
-				}
-
-				payload.success(resp);
-
-				if (isSession) {
-					sessionFetched = true;
-					runQueue();
-				}
+				action.payload.success(resp);
 			})
 			.catch(err => {
 				// Hack for detecting if the error is a promise. If not, something failed in our success flow
