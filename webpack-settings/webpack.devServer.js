@@ -1,7 +1,7 @@
 const BUILD = require('../build.js');
 const path = require('path');
 
-module.exports = function(options) {
+module.exports = function (options) {
 	const port = 3000;
 	let devServer = {
 		contentBase: path.join(__dirname, '../public'),
@@ -12,13 +12,13 @@ module.exports = function(options) {
 		inline: true,
 		open: false,
 		historyApiFallback: {
-            rewrites: [
-                {
-                    from: /./,
-                    to: '/index.html'
-                }
-            ]
-        }
+			rewrites: [
+				{
+					from: /./,
+					to: '/index.html'
+				}
+			]
+		}
 	}
 	if (!!options.IS_MOCK_SERVER) {
 		devServer.proxy = {
@@ -33,12 +33,13 @@ module.exports = function(options) {
 	} else {
 		devServer.proxy = {
 			'/api': {
-				target: 'https://azu-dapigate01:8080',
-                changeOrigin: true,
+				target: 'http://localhost:3001',
+				changeOrigin: true,
 				secure: false
 			}
 		};
 	}
-    return devServer;
-	
-;}
+	return devServer;
+
+	;
+}

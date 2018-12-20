@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const IS_MOCK_SERVER = true;
+const IS_MOCK_SERVER = false;
 
 const devServer = require('./webpack-settings/webpack.devServer')({
 	IS_MOCK_SERVER

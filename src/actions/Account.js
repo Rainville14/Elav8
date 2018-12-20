@@ -3,7 +3,7 @@ import { api } from 'utils/Ajax';
 export const getSession = () => (dispatch, getState) => {
     return dispatch(api({
         method: 'GET',
-        url: '/api/users/session',
+        url: '/api/v1/users/session',
         success: (resData) => {
             dispatch({
                 type: 'GET_SESSION',
